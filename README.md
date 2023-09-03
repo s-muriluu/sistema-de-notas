@@ -1,7 +1,8 @@
-Sistema para treinar lógica de programacao no JS
+# Sistema notas alunos
+## Sistema para treinar lógica de programacao no JS
 Utilizando console para saída de dados e prompt para entrada
-Funcionalidades:
+### Funcionalidades:
 - Cadastro de alunos
 - Cadastro de notas
-  -> serão armazenados 4 notas
+  - Serão armazenados 4 notas
 - Listagem dos alunos e médias
