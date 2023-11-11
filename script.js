@@ -160,7 +160,7 @@ function excluirAluno() {
 }
 
 function addAluno() {
-    let aluno = new Aluno(alunos[alunos.length-1].id+1, this.nomeAluno.value, this.turmaAluno.value);
+    let aluno = new Aluno(alunos.length == 0 ? 0 : alunos[alunos.length-1].id+1, this.nomeAluno.value, this.turmaAluno.value);
     alunos.push(aluno);
     localStorage.setItem("Alunos", JSON.stringify(alunos));
     btnAlunos();
