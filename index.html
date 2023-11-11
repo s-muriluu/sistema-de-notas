@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sistema de notas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: black;">
-    <script src="script.js"></script>
+<body>
+    <header>
+        <h1>SISTEMA DE NOTAS</h1>
+    </header>
+    <div class="body">
+        <div class="menu">
+            <button onclick="btnAlunos()">Alunos</button>
+            <button onclick="btnTurmas()">Turmas</button>
+            <button onclick="btnNotas()">Notas</button>
+            <button onclick="addTurmas()">ADD TURMA</button>
+            <button onclick="wipeData()">CLEAR</button>
+        </div>
+        <div id="content">
+        </div>
+    </div>
+    <footer>
+        Sistema de notas
+    </footer>
+    <script src="./script.js"></script>
 </body>
 </html>
