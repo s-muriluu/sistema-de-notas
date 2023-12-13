@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de notas</title>
+    <title>Sistema de Notas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,18 +12,58 @@
     </header>
     <div class="body">
         <div class="menu">
-            <button onclick="btnAlunos()">Alunos</button>
-            <button onclick="btnTurmas()">Turmas</button>
-            <button onclick="btnNotas()">Notas</button>
-            <button onclick="addTurmas()">ADD TURMA</button>
-            <button onclick="wipeData()">CLEAR</button>
+            <ul>
+                <li class="menu-list"><a class="menu-options" href="#">Home</a></li>
+                <li class="menu-list"><a class="menu-options" href="./alunos/alunos.html">Alunos</a></li>
+                <li class="menu-list"><a class="menu-options" href="./alunos/turmas.html">Turmas</a></li>
+                <li class="menu-list"><a class="menu-options" href="./alunos/notas.html">Notas</a></li>
+            </ul>
         </div>
         <div id="content">
+            <div id="home">
+                <h2>Sistema de Notas para Alunos</h2><br>
+            
+                <h3>Descrição do Projeto</h3>
+                <p>Este projeto consiste em um sistema de notas para alunos, originalmente desenvolvido em JavaScript com interface no console. Agora, o sistema foi aprimorado para incluir uma interface gráfica utilizando HTML e estilizado com CSS.</p><br>
+            
+                <h3>Funcionalidades</h3>
+                <ul>
+                    <li>CRUD Alunos</li>
+                    <li>CRUD Turmas</li>
+                    <li>CRUD Notas</li>
+                    <li>Média dos Alunos</li>
+                    <li>Persistência de dados com localStorage</li>
+                </ul><br>
+            
+                <h3>Sobre o projeto</h3><br>
+                
+                <p>Desenvolvido por Sérgio Murilo dos Santos</p>
+                <a href="https://github.com/s-muriluu" target="_blank" id="linkGitHub">GitHub</a><br>
+                
+                <h3>Recursos Técnicos</h3><br>
+            
+                <ul>
+                    <li><strong>HTML:</strong> Estruturação da página web.</li>
+                    <li><strong>CSS:</strong> Estilização da interface para uma melhor experiência do usuário.</li>
+                    <li><strong>JavaScript:</strong> Lógica de programação para manipulação de dados e interação com o usuário.</li>
+                </ul><br>
+                
+                <h3>Melhorias Adicionadas</h3><br>
+            
+                <ul>
+                    <li><strong>Interface Gráfica:</strong> Adição de uma interface para facilitar a interação do usuário.</li>
+                    <li><strong>Validações Aprimoradas:</strong> Tratamento de entradas do usuário para evitar dados inválidos.</li>
+                </ul>
+                
+                </div>
         </div>
     </div>
     <footer>
-        Sistema de notas
+        <p>Copyright &copy <script>document.write(new Date().getFullYear())</script> s-muriluu</p>
+        <a href="https://github.com/s-muriluu" target="_blank">
+            <img class="github" src="https://cdn.icon-icons.com/icons2/2429/PNG/512/github_logo_icon_147285.png">
+        </a>
     </footer>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

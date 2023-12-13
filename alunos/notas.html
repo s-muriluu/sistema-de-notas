@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Notas</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body onload="btnNotas()">
+    <header>
+        <h1>SISTEMA DE NOTAS</h1>
+    </header>
+    <div class="body">
+        <div class="menu">
+            <ul>
+                <li class="menu-list"><a class="menu-options" href="../index.html">Home</a></li>
+                <li class="menu-list"><a class="menu-options" href="../alunos/alunos.html">Alunos</a></li>
+                <li class="menu-list"><a class="menu-options" href="../alunos/turmas.html">Turmas</a></li>
+                <li class="menu-list"><a class="menu-options" href="#">Notas</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="formulario">
+                <button onclick="addNotas()">ADD NOTAS</button>
+            </div>
+            <div id="pesquisa">
+                <table id="tabela">
+                    <tr>
+                        <th>ID</th>
+                        <th>ALUNO</th>
+                        <th>NOTA1</th>
+                        <th>NOTA2</th>
+                        <th>NOTA3</th>
+                        <th>NOTA4</th>
+                        <th>MEDIA</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright &copy <script>document.write(new Date().getFullYear())</script> s-muriluu</p>
+        <a href="https://github.com/s-muriluu" target="_blank">
+            <img class="github" src="https://cdn.icon-icons.com/icons2/2429/PNG/512/github_logo_icon_147285.png">
+        </a>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>
