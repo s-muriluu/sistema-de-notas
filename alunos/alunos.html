@@ -6,7 +6,7 @@
     <title>Sistema de Notas</title>
     <link rel="stylesheet" href="../style.css">
 </head>
-<body onload="btnAlunos()">
+<body onload="load('student')">
     <header>
         <h1>SISTEMA DE NOTAS</h1>
     </header>
@@ -20,25 +20,25 @@
             </ul>
         </div>
         <div id="content">
-            <div id="formulario">
+            <div id="form">
                 <div class="formInputs">
                     <label for="id">ID</label>
-                    <input class="id" type="number" min="0" name="id" id="id" oninput="atualizacaoAluno()">
-                    <label for="nomeAluno">Nome</label>
-                    <input type="text" name="nomeAluno" id="nomeAluno" disabled>
-                    <label for="turmaAluno">Turma</label>
-                    <select width name="turmaAluno" id="turmaAluno" disabled>
+                    <input class="id" type="number" min="0" name="id" id="id" oninput="formUpdate('student')">
+                    <label for="studentName">Nome</label>
+                    <input type="text" name="studentName" id="studentName" disabled>
+                    <label for="class">Turma</label>
+                    <select width name="class" id="class" disabled>
                         <option value="">Selecione...</option>
                     </select>
                 </div>
-                <button onclick="criar('alunos')" id="crudCriar">Criar</button>
-                <button onclick="atualizar('alunos')" id="crudAtualizar" disabled>Atualizar</button>
-                <button onclick="excluir('alunos')" id="crudExcluir" disabled>Excluir</button>
-                <button onclick="salvar('alunos')" id="crudSalvar" disabled>Salvar</button>
-                <button onclick="cancelar('alunos')" id="crudCancelar" disabled>Cancelar</button>
+                <button onclick="create('student')" id="create">Criar</button>
+                <button onclick="update('student')" id="update" disabled>Atualizar</button>
+                <button onclick="del('student')" id="delete" disabled>Excluir</button>
+                <button onclick="save('student')" id="save" disabled>Salvar</button>
+                <button onclick="cancel('student')" id="cancel" disabled>Cancelar</button>
             </div>
-            <div id="pesquisa">
-                <table id="tabela">
+            <div id="search">
+                <table id="table">
                     <tr>
                         <th>ID</th>
                         <th>NOME</th>

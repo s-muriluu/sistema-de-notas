@@ -6,7 +6,7 @@
     <title>Sistema de Notas</title>
     <link rel="stylesheet" href="../style.css">
 </head>
-<body onload="btnTurmas()">
+<body onload="load('class')">
     <header>
         <h1>SISTEMA DE NOTAS</h1>
     </header>
@@ -20,11 +20,23 @@
             </ul>
         </div>
         <div id="content">
-            <div id="formulario">
-                <button onclick="addTurmas()">ADD TURMA</button>
+            <div id="form">
+                <div class="formInputs">
+                    <label for="id">ID</label>
+                    <input class="id" type="number" min="0" name="id" id="id" oninput="formUpdate('class')">
+                    <label for="code">Código</label>
+                    <input class="classInput" type="number" min="0" name="code" id="code" disabled>
+                    <label for="year">Ano</label>
+                    <input class="classInput" type="number" min="0" name="year" id="year" disabled>
+                </div>
+                <button onclick="create('class')" id="create">Criar</button>
+                <button onclick="update('class')" id="update" disabled>Atualizar</button>
+                <button onclick="del('class')" id="delete" disabled>Excluir</button>
+                <button onclick="save('class')" id="save" disabled>Salvar</button>
+                <button onclick="cancel('class')" id="cancel" disabled>Cancelar</button>
             </div>
-            <div id="pesquisa">
-                <table id="tabela">
+            <div id="search">
+                <table id="table">
                     <tr>
                         <th>ID</th>
                         <th>CÓDIGO</th>

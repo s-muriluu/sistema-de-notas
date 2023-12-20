@@ -69,7 +69,7 @@ button:hover:enabled {
     background-color: #d3e1ee;
 }
 
-#pesquisa {
+#search {
     overflow-y: auto;
     height: 400px;
     width: 100%;
@@ -90,7 +90,7 @@ th {
     color: white;
 }
 
-#formulario {
+#form {
     height: 350px;
 }
 
@@ -138,6 +138,10 @@ select {
 
 .id {
     width: 50px
+}
+
+.classInput {
+    width: 100px;
 }
 
 input {
