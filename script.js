@@ -24,7 +24,7 @@ class Grades {
         // FK
         this.student = student,
         this.grades = listGrades,
-        this.average = ((this.grades[0] + this.grades[1] + this.grades[2] + this.grades[3]) / 4)
+        this.average = ((Number(this.grades[0]) + Number(this.grades[1]) + Number(this.grades[2]) + Number(this.grades[3])) / 4)
     }
 }
 
@@ -43,12 +43,13 @@ let option = false;
 function load(page) {
     document.getElementById('id').focus();
     if (page == 'student'){
-        classesSelectionBox();
+        selectionBox(page);
         search('students');
     } else if (page == 'class'){
         search('classes');
     } else if (page == 'grade'){
         search('grades');
+        selectionBox(page);
     }
 }
 
@@ -73,7 +74,14 @@ function add(page) {
             localStorage.setItem('ClassesStorage', JSON.stringify(classesData));
         }
     } else if (page == 'grade'){
-        alert('Grades');
+        if (this.students.value == ''){
+            alert('Por favor, selecione o nome do aluno');
+            create('grade');
+        } else {
+            let gradeInfo = new Grades(this.id.value, this.students.value, [this.grade1.value, this.grade2.value, this.grade3.value, this.grade4.value]);
+            gradesData.push(gradeInfo);
+            localStorage.setItem('GradesStorage', JSON.stringify(gradesData));
+        }
     }
 }
 
@@ -93,7 +101,7 @@ function formUpdate(page){
             document.getElementById('studentName').disabled = true;
             document.getElementById('class').disabled = true;
             for (let i=0; i < studentsData.length; i++){
-                if (this.id.value == studentsData[i].id) {
+                if (this.id.value == studentsData[i].id){
                     this.studentName.value = studentsData[i].name;
                     this.class.value = studentsData[i].studentClass;
                 }
@@ -106,7 +114,7 @@ function formUpdate(page){
             document.getElementById('code').disabled = true;
             document.getElementById('year').disabled = true;
             for (let i=0; i < classesData.length; i++){
-                if (this.id.value == classesData[i].id) {
+                if (this.id.value == classesData[i].id){
                     this.code.value = classesData[i].code;
                     this.year.value = classesData[i].year;
                 }
@@ -114,7 +122,27 @@ function formUpdate(page){
         }
 
     } else if (page == 'grade'){
-        alert('grade');
+        this.students.value = '';
+        this.grade1.value = '';
+        this.grade2.value = '';
+        this.grade3.value = '';
+        this.grade4.value = '';
+        if (this.id.value != ''){
+            document.getElementById('students').disabled = true;
+            document.getElementById('grade1').disabled = true;
+            document.getElementById('grade2').disabled = true;
+            document.getElementById('grade3').disabled = true;
+            document.getElementById('grade4').disabled = true;
+            for (let i=0; i < gradesData.length; i++){
+                if (this.id.value == gradesData[i].id){
+                    this.students.value = gradesData[i].student;
+                    this.grade1.value = gradesData[i].grades[0];
+                    this.grade2.value = gradesData[i].grades[1];
+                    this.grade3.value = gradesData[i].grades[2];
+                    this.grade4.value = gradesData[i].grades[3];
+                }
+            }
+        }
     }
 }
 
@@ -143,6 +171,19 @@ function updateData(page){
                 }
             }
             localStorage.setItem('ClassesStorage', JSON.stringify(classesData));
+        }
+    } else if (page == 'grade'){
+        if (this.students.value == '') {
+            alert('Por favor, selecione o nome do aluno!');
+        } else {
+            for (let i=0; i < gradesData.length; i++){
+                if (this.id.value == gradesData[i].id){
+                    gradesData[i].student = document.getElementById('students').value;
+                    gradesData[i].grades = [this.grade1.value, this.grade2.value, this.grade3.value, this.grade4.value];
+                    gradesData[i].average = (Number(this.grade1.value) + Number(this.grade2.value) + Number(this.grade3.value) + Number(this.grade4.value)) / 4;
+                }
+            }
+            localStorage.setItem('GradesStorage', JSON.stringify(gradesData));
         }
     }
 }
@@ -188,12 +229,21 @@ function search(page) {
 }
 
 // Carrega as turmas na caixa de seleção do formulário
-function classesSelectionBox() {
-    let selecao = document.getElementById('class')
-    for (let i=0; i < classesData.length; i++){
-        selecao.innerHTML += `<option value='${classesData[i].code}'>${classesData[i].code}</option>`
+function selectionBox(page) {
+    if (page == 'student'){
+        let selection = document.getElementById('class')
+        for (let i=0; i < classesData.length; i++){
+            selection.innerHTML += `<option value='${classesData[i].code}'>${classesData[i].code}</option>`
+        }
+    } else if (page == 'grade'){
+        let selection = document.getElementById('students')
+        for (let i=0; i < studentsData.length; i++){
+            selection.innerHTML += `<option value='${studentsData[i].name}'>${studentsData[i].name}</option>`
+        }
     }
 }
+
+
 
 // CRUD Elements
 function create(page) {
@@ -212,7 +262,18 @@ function create(page) {
         document.getElementById('code').focus();
         document.getElementById('id').value = classesData.length == 0 ? 0 : Number(classesData[classesData.length-1].id)+1;
     } else if (page == 'grade'){
-        document.getElementById('id').value = classesData.length == 0 ? 0 : classesData[classesData.length-1].id+1;
+        this.students.value = '';
+        this.grade1.value = '';
+        this.grade2.value = '';
+        this.grade3.value = '';
+        this.grade4.value = '';
+        document.getElementById('students').disabled = false;
+        document.getElementById('grade1').disabled = false;
+        document.getElementById('grade2').disabled = false;
+        document.getElementById('grade3').disabled = false;
+        document.getElementById('grade4').disabled = false;
+        document.getElementById('students').focus();
+        document.getElementById('id').value = gradesData.length == 0 ? 0 : Number(gradesData[gradesData.length-1].id)+1;
     }
     document.getElementById('id').disabled = true;
     document.getElementById('create').disabled = true;
@@ -237,6 +298,16 @@ function update(page){
         } else {
             document.getElementById('code').disabled = false;
             document.getElementById('year').disabled = false;
+        }
+    } else if (page == 'grade'){
+        if (document.getElementById('students').value == ''){
+            alert('Nenhum aluno selecionado!');
+        } else {
+            document.getElementById('students').disabled = false;
+            document.getElementById('grade1').disabled = false;
+            document.getElementById('grade2').disabled = false;
+            document.getElementById('grade3').disabled = false;
+            document.getElementById('grade4').disabled = false;
         }
     }
     document.getElementById('create').disabled = true;
@@ -279,6 +350,21 @@ function del(page) {
                 cancel('class');
             }
         }
+    } else if (page == 'grade'){
+        if (document.getElementById('students').value == ''){
+            alert('Nenhum aluno selecionado!');
+        } else {
+            if (confirm('Deseja excluir essas notas?')){
+                for (let i=0; i < gradesData.length; i++){
+                    if (this.id.value == gradesData[i].id){
+                        gradesData.splice(i, 1);
+                    }
+                }
+                localStorage.setItem('GradesStorage', JSON.stringify(gradesData));
+            } else {
+                cancel('grade');
+            }
+        }
     }
     location.reload();
 }
@@ -304,6 +390,17 @@ function cancel(page){
         document.getElementById('year').value = '';
         document.getElementById('code').disabled = true;
         document.getElementById('year').disabled = true;
+    } else if (page == 'grade'){
+        document.getElementById('students').value = '';
+        document.getElementById('grade1').value = '';
+        document.getElementById('grade2').value = '';
+        document.getElementById('grade3').value = '';
+        document.getElementById('grade4').value = '';
+        document.getElementById('students').disabled = true;
+        document.getElementById('grade1').disabled = true;
+        document.getElementById('grade2').disabled = true;
+        document.getElementById('grade3').disabled = true;
+        document.getElementById('grade4').disabled = true;
     }
     document.getElementById('save').disabled = true;
     document.getElementById('delete').disabled = true;

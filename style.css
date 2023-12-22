@@ -144,6 +144,14 @@ select {
     width: 100px;
 }
 
+.gradesInput {
+    width: 50px;
+}
+
+#students {
+    width: 300px;
+}
+
 input {
     width: 300px;
 }

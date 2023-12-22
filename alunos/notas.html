@@ -21,6 +21,27 @@
         </div>
         <div id="content">
             <div id="form">
+                <div class="formInputs">
+                    <label for="id">ID</label>
+                    <input class="id" type="number" min="0" name="id" id="id" oninput="formUpdate('grade')">
+                    <label for="students">Alunos</label>
+                    <select width name="students" id="students" disabled>
+                        <option value="">Selecione...</option>
+                    </select>
+                    <label for="grade1">Grade1</label>
+                    <input class="gradesInput" type="number" min="0" max="10" name="grade1" id="grade1" disabled>
+                    <label for="grade1">Grade2</label>
+                    <input class="gradesInput" type="number" min="0" max="10" name="grade2" id="grade2" disabled>
+                    <label for="grade1">Grade3</label>
+                    <input class="gradesInput" type="number" min="0" max="10" name="grade3" id="grade3" disabled>
+                    <label for="grade1">Grade4</label>
+                    <input class="gradesInput" type="number" min="0" max="10" name="grade4" id="grade4" disabled>
+                </div>
+                <button onclick="create('grade')" id="create">Criar</button>
+                <button onclick="update('grade')" id="update" disabled>Atualizar</button>
+                <button onclick="del('grade')" id="delete" disabled>Excluir</button>
+                <button onclick="save('grade')" id="save" disabled>Salvar</button>
+                <button onclick="cancel('grade')" id="cancel" disabled>Cancelar</button>
             </div>
             <div id="search">
                 <table id="table">
